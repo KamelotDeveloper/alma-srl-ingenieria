@@ -1,80 +1,147 @@
 ---
 import Carru3 from "./Carru3.astro";
-import Carruseldeal from "./Carruseldeal.astro";
+import Contador from "./Contador.astro";
 import Galeria from "./Galeria.astro";
 import Intro from "./Intro.astro";
 ---
 
-<section class="px-6 py-16 max-w-6xl mx-auto fade-in-left">
-  <h2 class="font-serif text-3xl text-center mb-10">Why Work With Paula</h2>
-  <div class="grid gap-6 md:grid-cols-3 mb-10">
-    <div class="reveal p-6 border rounded-2xl shadow-soft">
-      <Intro>
-    </div>
-    <div class="reveal p-6 border rounded-2xl shadow-soft">
-     <Galeria  />
+<section class="px-6 py-16 max-w-6xl mx-auto reveal">
+  <header class="text-center mb-10">
+    <h2 class="font-serif text-3xl text-gray-100">Áreas principales</h2>
+    <p class="mt-2 text-gray-300/90 max-w-2xl mx-auto">
+      Elegí lo que necesitás y entrá directo a la sección correspondiente.
+    </p>
+  </header>
 
-    </div>
-    <div class="reveal p-6 border rounded-2xl shadow-soft">
-      <Carru3 />
-    </div>
+  <div class="grid gap-6 md:grid-cols-3">
+    <!-- SERVICIOS -->
+    <a
+      href="/Servicios"
+      class="group rounded-2xl border border-white/10 bg-white/5 p-5
+             hover:bg-white/10 hover:border-white/20 transition
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      aria-label="Ir a Servicios"
+    >
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-100">Servicios</h3>
+          <p class="mt-1 text-sm text-gray-300">
+            Ingeniería, dirección de obra, cálculos y proyectos.
+          </p>
+        </div>
+        <span class="text-gray-300 group-hover:text-white transition" aria-hidden="true">→</span>
+      </div>
+
+      <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-slate-950/25">
+        <Intro />
+      </div>
+
+      <div class="mt-4 inline-flex items-center text-sm font-semibold text-gray-100">
+        Ver servicios <span class="ml-2 group-hover:translate-x-1 transition" aria-hidden="true">→</span>
+      </div>
+    </a>
+
+    <!-- ALQUILER -->
+    <a
+      href="/Alquiler"
+      class="group rounded-2xl border border-white/10 bg-white/5 p-5
+             hover:bg-white/10 hover:border-white/20 transition
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      aria-label="Ir a Alquiler de herramientas"
+    >
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-100">Alquiler</h3>
+          <p class="mt-1 text-sm text-gray-300">
+            Herramientas y equipos para obra y mantenimiento.
+          </p>
+        </div>
+        <span class="text-gray-300 group-hover:text-white transition" aria-hidden="true">→</span>
+      </div>
+
+      <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-slate-950/25">
+        <Galeria />
+      </div>
+
+      <div class="mt-4 inline-flex items-center text-sm font-semibold text-gray-100">
+        Ver alquiler <span class="ml-2 group-hover:translate-x-1 transition" aria-hidden="true">→</span>
+      </div>
+    </a>
+
+    <!-- TIENDA -->
+    <a
+      href="/Tienda"
+      class="group rounded-2xl border border-white/10 bg-white/5 p-5
+             hover:bg-white/10 hover:border-white/20 transition
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      aria-label="Ir a Tienda"
+    >
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-100">Tienda</h3>
+          <p class="mt-1 text-sm text-gray-300">
+            Pinturería, productos y soluciones para tu obra.
+          </p>
+        </div>
+        <span class="text-gray-300 group-hover:text-white transition" aria-hidden="true">→</span>
+      </div>
+
+      <div class="mt-4 overflow-hidden rounded-xl border border-white/10 bg-slate-950/25">
+        <Carru3 />
+      </div>
+
+      <div class="mt-4 inline-flex items-center text-sm font-semibold text-gray-100">
+        Ver tienda <span class="ml-2 group-hover:translate-x-1 transition" aria-hidden="true">→</span>
+      </div>
+    </a>
   </div>
-<section class="fade-in-left">
-  <div class="grid gap-6 md:grid-cols-3 reveal p-6 border rounded-2xl shadow-soft">
-    <div>
-      <h3 class="mb-2"><strong>Work With Paula</strong></h3>
-      <p><strong>Trusted</strong>Guidance for your Business Journey. When it comes to buying or selling a business in Florida, having the right advisor makes all the difference. Paula Echeguia brings proven experience, market knowledge, and a client-first approach to every transaction. She helps you determine the right value, negotiates effectively on your behalf, and ensures all legal and financial details are handled with precision. With Paula by your side, you can move forward with confidence knowing your goals are in expert hands.</p>
-    </div>
-    <div><h3 class="mb-2"> <strong>Professional Help</strong></h3><p> <strong>A Business </strong> Broker is essential when it comes to buying or selling a business. With Paula and the backing of South Florida M&A Advisors, you gain the guidance of licensed professionals who handle each step with expertise and dedication. From suggesting a selling price and marketing your business to negotiating with buyers and addressing legal and financial details, Paula ensures that your interests are always protected.</p></div>
-    <div><h3 class="mb-2"> <strong>We Assist You</strong></h3> <p> <strong>Sometimes </strong>just one call or message can open the door to new opportunities. When you work with Paula, you have a trusted advisor who truly understands the challenges of buying or selling a business in Florida. From identifying serious buyers to navigating complex negotiations, Paula guides you with professionalism and proven expertise. Backed by South Florida M&A Advisors, she ensures that every step of the process is handled with confidence and care, so you can focus on your future knowing your business is in specialized hands.</p></div>
-  </div>
+
+  <!-- TRABAJOS Y CLIENTES -->
+  <section class="mt-14 reveal">
+    <header class="text-center mb-8">
+      <h2 class="font-serif text-3xl text-gray-100">Trabajos y clientes</h2>
+      <p class="mt-2 text-gray-300/90 max-w-2xl mx-auto">
+        Experiencia, volumen y confianza respaldada por resultados.
+      </p>
+    </header>
+    <Contador />
   </section>
 
-  <section class="fade-in-left">
-   <div class="mt-8 mb-8"> <h2 class="font-serif text-3xl text-center mb-8">Deals Closed by South Florida  M&A  Advisors</h2></div>
-    <Carruseldeal />
- </section>
-  
- 
-<style>
-  @keyframes fadeInLeft {
-    0% {
+  <style>
+    /* Reveal simple y consistente (un solo sistema) */
+    .reveal {
       opacity: 0;
-      transform: translateX(-20px);
+      transform: translateY(14px);
+      transition: opacity 700ms ease, transform 700ms ease;
+      will-change: opacity, transform;
     }
-    100% {
+    .reveal.show {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
-  }
+  </style>
 
-  /* Estado inicial oculto */
-  .fade-in-left {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+  <script>
+    const targets = document.querySelectorAll(".reveal");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Estado cuando aparece en pantalla */
-  .fade-in-left.show {
-    animation: fadeInLeft 1.5s ease-out forwards;
-  }
-</style>
+    if (reduceMotion) {
+      targets.forEach((el) => el.classList.add("show"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
 
-<script>
-  // Detectar elementos con la clase fade-in-left
-  const elements = document.querySelectorAll('.fade-in-left');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // Evita que se repita
-      }
-    });
-  }, { threshold: 0.2 });
-
-  elements.forEach(el => observer.observe(el));
-</script>
-
+      targets.forEach((el) => io.observe(el));
+    }
+  </script>
 </section>
+

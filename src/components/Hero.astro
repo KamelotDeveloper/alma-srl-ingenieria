@@ -1,6 +1,7 @@
 <section
   id="main"
-  class="relative min-h-screen flex items-center justify-center bg-black text-white px-6 pt-16 overflow-hidden"
+  class="relative min-h-[92vh] md:min-h-screen flex items-center justify-center
+         bg-black text-white px-6 pt-16 overflow-hidden"
 >
   <!-- VIDEO DE FONDO -->
   <video
@@ -8,43 +9,79 @@
     muted
     loop
     playsinline
+    preload="metadata"
+    poster="/hero-poster.jpg"
     class="absolute inset-0 w-full h-full object-cover"
+    aria-hidden="true"
   >
-    <source src="/portada.mp4" type="video/mp4" />
-    <!-- Fallback para navegadores sin soporte -->
+    <source src="/video.mp4" type="video/mp4" />
   </video>
 
-  <!-- CAPA OSCURA PARA CONTRASTE -->
-  <div class="absolute inset-0 bg-black/50"></div>
+  <!-- OVERLAY: mejor contraste y lectura -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/80"></div>
 
-  <!-- CONTENIDO HERO (arranca oculto) -->
+  <!-- CONTENIDO HERO -->
   <div
     id="hero-content"
-    class="relative z-10 max-w-3xl text-center
+    class="relative z-10 w-full max-w-4xl text-center
            opacity-0 translate-y-6
            transition-all duration-1000"
   >
+    <!-- Logo -->
     <img
-      src="LogopngPE.png"
-      alt="Paula Echeguia Business Broker"
-      class="w-72 sm:w-80 max-w-xl h-auto object-contain mx-auto"
+      src="/logo.png"
+      alt="ALMA SRL"
+      class="w-56 sm:w-64 md:w-72 h-auto object-contain mx-auto drop-shadow"
+      loading="eager"
+      decoding="async"
     />
 
-    <div class="mt-6 flex flex-col md:flex-row justify-center gap-4">
+    <!-- Propuesta de valor -->
+    <h1 class="mt-6 font-serif text-3xl sm:text-4xl md:text-5xl leading-tight">
+      Ingeniería, obra y soluciones técnicas
+      <span class="block text-white/90">de punta a punta</span>
+    </h1>
+
+    <p class="mt-4 text-base sm:text-lg text-white/80 leading-relaxed mx-auto max-w-2xl">
+      Proyecto, cálculo, dirección y ejecución. Presupuestos claros, plazos definidos y asesoramiento técnico real.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
       <a
-        target="_blank"
-        href="https://bizmls.com/listings/bbf-1287012/bus-all.asp"
-        class="px-6 py-3 bg-white text-black rounded-2xl hover:bg-[#d4ae6d]"
+        href="/contactanos"
+        class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold
+               bg-white text-slate-900 hover:bg-white/90 transition shadow"
       >
-        Search Businesses
+        Solicitar presupuesto
       </a>
+
       <a
-        href="/contact"
-        class="px-6 py-3 border border-white rounded-2xl hover:bg-[#d4ae6d]"
+        href="#servicios"
+        class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold
+               border border-white/20 text-white hover:bg-white/10 transition"
       >
-        Contact Paula
+        Ver servicios
       </a>
     </div>
+
+    <!-- Confianza / badges -->
+    <div class="mt-6 flex flex-wrap gap-2 justify-center text-xs text-white/70">
+      <span class="rounded-full border border-white/15 px-3 py-1 bg-white/5">Dirección de obra</span>
+      <span class="rounded-full border border-white/15 px-3 py-1 bg-white/5">Cálculo estructural</span>
+      <span class="rounded-full border border-white/15 px-3 py-1 bg-white/5">Impermeabilización</span>
+      <span class="rounded-full border border-white/15 px-3 py-1 bg-white/5">Alquiler de herramientas</span>
+    </div>
+
+    <!-- Scroll hint (opcional) -->
+    <a
+      href="#servicios"
+      class="mt-10 inline-flex items-center justify-center text-white/60 hover:text-white transition"
+      aria-label="Bajar a servicios"
+    >
+      <span class="text-sm">Deslizar</span>
+      <span class="ml-2 animate-bounce">↓</span>
+    </a>
   </div>
 
   <script>
@@ -52,14 +89,10 @@
       const navbar = document.getElementById("navbar");
       const heroContent = document.getElementById("hero-content");
 
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
       if (navbar) {
-        // Navbar arranca oculto para evitar flash
-        navbar.classList.add(
-          "transition-all",
-          "duration-700",
-          "-translate-y-10",
-          "opacity-0"
-        );
+        navbar.classList.add("transition-all", "duration-700", "-translate-y-10", "opacity-0");
         requestAnimationFrame(() => {
           navbar.classList.remove("-translate-y-10", "opacity-0");
           navbar.classList.add("translate-y-0", "opacity-100");
@@ -67,7 +100,11 @@
       }
 
       if (heroContent) {
-        // Hero arranca oculto y se muestra suave
+        if (reduceMotion) {
+          heroContent.classList.remove("opacity-0", "translate-y-6");
+          heroContent.classList.add("opacity-100", "translate-y-0");
+          return;
+        }
         requestAnimationFrame(() => {
           heroContent.classList.remove("opacity-0", "translate-y-6");
           heroContent.classList.add("opacity-100", "translate-y-0");
@@ -76,5 +113,3 @@
     });
   </script>
 </section>
-
-

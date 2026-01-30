@@ -1,0 +1,204 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Datos de contacto (ajustá)
+const WA_NUMBER = "5493571594446";
+const WA_TEXT = encodeURIComponent("Hola, quiero consultar por alquiler de herramientas. ¿Qué tienen disponible?");
+const WHATSAPP_URL = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
+
+// Catálogo (por ahora vacío o con ejemplos)
+const tools = [
+  // Ejemplos (podés borrar estos y dejar [])
+  // {
+  //   name: "Hidrolavadora",
+  //   short: "Ideal para limpieza profunda en obra y exteriores.",
+  //   deposit: "Consultar",
+  //   pricePerDay: "Consultar",
+  //   includes: ["Manguera", "Pistola", "Pico regulable"],
+  // },
+  // {
+  //   name: "Rotomartillo",
+  //   short: "Para perforación en mampostería y hormigón.",
+  //   deposit: "Consultar",
+  //   pricePerDay: "$X / día",
+  //   includes: ["Maletín", "Mechas (según disponibilidad)"],
+  // },
+];
+---
+
+<Base>
+  <Nav />
+
+  <main class="px-6 pt-24 md:pt-28 max-w-6xl mx-auto">
+    <!-- HERO -->
+    <header class="text-center mb-10">
+      <p class="text-sm uppercase tracking-wide text-white/60">Alquiler</p>
+      <h1 class="font-serif text-4xl md:text-5xl mt-2">Herramientas para tu obra</h1>
+      <p class="mt-3 text-white/75 max-w-2xl mx-auto leading-relaxed">
+        Alquilá equipos por día o por período. Te asesoramos según el trabajo y la disponibilidad.
+      </p>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold
+                 bg-white text-slate-900 hover:bg-white/90 transition shadow"
+        >
+          Consultar por WhatsApp
+        </a>
+        <a
+          href="/contactanos"
+          class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold
+                 border border-white/20 text-white hover:bg-white/10 transition"
+        >
+          Ir a Contacto
+        </a>
+      </div>
+    </header>
+
+    <!-- BUSCADOR + FILTROS (front-only) -->
+    <section class="rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6">
+      <div class="flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+        <div>
+          <h2 class="font-serif text-2xl">Catálogo</h2>
+          <p class="text-white/70 mt-1">
+            {tools.length > 0 ? "Buscá por nombre y revisá detalles." : "Pronto vamos a publicar el listado completo."}
+          </p>
+        </div>
+
+        <div class="w-full md:w-80">
+          <label class="sr-only" for="toolSearch">Buscar herramienta</label>
+          <input
+            id="toolSearch"
+            type="text"
+            placeholder="Buscar herramienta…"
+            class="w-full rounded-xl bg-slate-950/40 border border-white/10
+                   px-4 py-3 text-white placeholder:text-white/40
+                   focus:outline-none focus:ring-2 focus:ring-white/30"
+          />
+        </div>
+      </div>
+
+      <!-- LISTADO -->
+      <div id="toolGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {tools.length === 0 ? (
+          <>
+            <!-- Placeholders -->
+            {Array.from({ length: 6 }).map(() => (
+              <div class="rounded-2xl border border-white/10 bg-slate-950/25 p-5 animate-pulse">
+                <div class="h-5 w-2/3 bg-white/10 rounded"></div>
+                <div class="mt-3 h-4 w-full bg-white/10 rounded"></div>
+                <div class="mt-2 h-4 w-5/6 bg-white/10 rounded"></div>
+                <div class="mt-5 h-10 w-full bg-white/10 rounded-xl"></div>
+              </div>
+            ))}
+          </>
+        ) : (
+          tools.map((t) => (
+            <article
+              class="tool-card rounded-2xl border border-white/10 bg-slate-950/25 p-5
+                     hover:bg-slate-950/35 hover:border-white/20 transition"
+              data-name={t.name.toLowerCase()}
+            >
+              <h3 class="text-xl font-semibold text-white">{t.name}</h3>
+              <p class="mt-2 text-sm text-white/70">{t.short}</p>
+
+              <div class="mt-4 space-y-2 text-sm text-white/80">
+                <p>
+                  <span class="text-white/60">Precio:</span>{" "}
+                  <span class="font-semibold">{t.pricePerDay || "Consultar"}</span>
+                </p>
+                <p>
+                  <span class="text-white/60">Depósito:</span>{" "}
+                  <span class="font-semibold">{t.deposit || "Consultar"}</span>
+                </p>
+              </div>
+
+              {t.includes?.length ? (
+                <ul class="mt-4 text-sm text-white/70 list-disc pl-5 space-y-1">
+                  {t.includes.map((x) => <li>{x}</li>)}
+                </ul>
+              ) : null}
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-5 inline-flex w-full items-center justify-center rounded-xl px-4 py-3 font-semibold
+                       bg-white text-slate-900 hover:bg-white/90 transition"
+              >
+                Consultar disponibilidad
+              </a>
+            </article>
+          ))
+        )}
+      </div>
+    </section>
+
+    <!-- CÓMO ALQUILAR -->
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <h2 class="font-serif text-2xl">Cómo alquilar</h2>
+        <ol class="mt-4 space-y-3 text-white/75 list-decimal pl-5">
+          <li>Escribinos por WhatsApp o completá el formulario.</li>
+          <li>Decinos qué trabajo vas a hacer y por cuánto tiempo.</li>
+          <li>Confirmamos disponibilidad, precio y depósito.</li>
+          <li>Retiro en el local (o coordinación, si aplica).</li>
+        </ol>
+        <p class="mt-4 text-sm text-white/60">
+          Recomendación: consultá disponibilidad con antelación, especialmente fines de semana.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+        <h2 class="font-serif text-2xl">Condiciones</h2>
+        <ul class="mt-4 space-y-3 text-white/75 list-disc pl-5">
+          <li>Se solicita documento y datos de contacto.</li>
+          <li>Depósito según herramienta y estado del equipo.</li>
+          <li>Entrega y devolución con verificación.</li>
+          <li>Consumo/insumos (discos, mechas, etc.) según corresponda.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="mt-10 mb-16 rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+      <h2 class="font-serif text-2xl">¿Querés que te recomendemos la herramienta correcta?</h2>
+      <p class="mt-2 text-white/70">
+        Contanos el trabajo (material, metros, tipo de superficie) y te guiamos.
+      </p>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-5 inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold
+               bg-white text-slate-900 hover:bg-white/90 transition shadow"
+      >
+        Hablar por WhatsApp
+      </a>
+    </section>
+
+    <script>
+      // Buscador simple (sin framework)
+      const input = document.getElementById("toolSearch");
+      const cards = document.querySelectorAll(".tool-card");
+
+      if (input && cards.length) {
+        input.addEventListener("input", (e) => {
+          const q = e.target.value.trim().toLowerCase();
+          cards.forEach((c) => {
+            const name = c.dataset.name || "";
+            c.style.display = name.includes(q) ? "" : "none";
+          });
+        });
+      }
+    </script>
+  </main>
+
+  <Footer />
+</Base>
+

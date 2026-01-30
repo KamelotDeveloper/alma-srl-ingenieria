@@ -1,5 +1,5 @@
 ---
-const { title = "Paula Echeguia - Business Broker", description = "Confidential advisory for buying and selling businesses in Miami." } = Astro.props;
+const { title = "Alma S.R.L", description = "Servicios de ingenieria y obras." } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ const { title = "Paula Echeguia - Business Broker", description = "Confidential 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/LogopngPE.png">
+    <link rel="icon" type="image/png" href="/logo.png">
 
 
     <!-- SEO / OG -->
@@ -18,15 +18,18 @@ const { title = "Paula Echeguia - Business Broker", description = "Confidential 
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   </head>
-  <body class="font-sans text-gray-900 bg-white">
-    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
-    <slot />
-  </body>
+  <body class="font-sans text-gray-100" style="background-color: #28343D;">
+  <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+  <slot />
+</body>
+
 </html>
 

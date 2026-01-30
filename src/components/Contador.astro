@@ -2,91 +2,126 @@
 // src/components/AnimatedCounterGroup.astro
 
 const defaultItems = [
-    { value: 350, label: "closed businesses", suffix: "+", delay: 0 },
-    { value: 40, label: "Business Served", suffix: "+", delay: 100 },
-    { value: 1000, label: "Customer Testimonials", suffix: "+", delay: 200 }
+  { value: 35, label: "Obras", suffix: "+", delay: 0 },
+  { value: 1000, label: "Compradores", suffix: "+", delay: 120 },
+  { value: 15, label: "Testimonios", suffix: "+", delay: 240 },
 ];
 
 const {
-    items = defaultItems,
-    duration = 2500,
-    color = '#d4ae6d',
-    class: className,
+  items = defaultItems,
+  duration = 2200,
+  accent = "rgba(255,255,255,0.9)",      // color de números (en dark)
+  surface = "rgba(255,255,255,0.06)",    // fondo del bloque
+  border = "rgba(255,255,255,0.10)",     // borde sutil
+  class: className,
 } = Astro.props;
-
-const hydrationStrategy = 'client:load'; 
-// 👈 Cambié a client:load para tener control total del scroll (visible hidrata antes)
 ---
 
-<div 
-    class={`py-12 md:py-16 bg-white ${className || ''}`}
-    id="animated-counter-section"
+<section
+  id="animated-counter-section"
+  aria-label="Indicadores de experiencia y confianza"
+  class={`rounded-2xl border p-6 md:p-8 ${className || ""}`}
+  style={`background:${surface}; border-color:${border};`}
 >
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-around items-start md:space-x-4 space-y-8 md:space-y-0">
-        
-        {items.map((item, index) => (
-            <div 
-                class="flex flex-col items-center p-4 w-full opacity-0 transition-opacity duration-700"
-                data-target-value={item.value}
-                data-duration={duration}
-                data-delay={item.delay}
-                data-index={index}
-            >
-                <div class="text-6xl md:text-7xl font-extrabold" style={`color: ${color};`}>
-                    <span class="count-up-value tabular-nums">0</span>
-                    <span class="text-4xl align-top">{item.suffix}</span>
-                </div>
-                
-                <p class="mt-2 text-xl font-medium text-gray-700 uppercase tracking-wider text-center">
-                    {item.label}
-                </p>
-            </div>
-        ))}
-    </div>
-</div>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
+    {items.map((item, index) => (
+      <div
+        class="rounded-2xl border border-white/10 bg-slate-950/25 px-5 py-6
+               opacity-0 translate-y-2 transition-all duration-700"
+        data-target-value={item.value}
+        data-duration={duration}
+        data-delay={item.delay}
+        data-label={item.label}
+        data-suffix={item.suffix}
+        data-index={index}
+      >
+        <div class="flex items-end justify-center gap-1">
+          <span
+            class="count-up-value tabular-nums font-extrabold text-5xl md:text-6xl leading-none"
+            style={`color:${accent};`}
+          >
+            0
+          </span>
+          <span class="text-2xl md:text-3xl font-bold text-white/70 leading-none pb-1">
+            {item.suffix}
+          </span>
+        </div>
 
-<script define:vars={{ hydrationStrategy }}>
-    const easeOutQuad = (t) => 1 - (1 - t) * (1 - t);
+        <p class="mt-3 text-sm md:text-base font-semibold text-white/70 uppercase tracking-wider">
+          {item.label}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
 
-    function startCountUp(element, start, end, duration) {
-        let startTime = null;
-        const step = (timestamp) => {
-            if (!startTime) startTime = timestamp;
-            const elapsed = timestamp - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const easedProgress = easeOutQuad(progress);
-            const currentValue = Math.floor(start + (end - start) * easedProgress);
-            element.textContent = currentValue.toLocaleString('en-US');
-            if (progress < 1) window.requestAnimationFrame(step);
-        };
-        window.requestAnimationFrame(step);
-    }
+<script>
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-    const counters = document.querySelectorAll('[data-target-value][data-index]');
+  function formatNumber(n) {
+    // AR: 1.000, 10.000, etc.
+    return n.toLocaleString("es-AR");
+  }
 
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const container = entry.target;
-                const element = container.querySelector('.count-up-value');
-                const end = parseInt(container.dataset.targetValue, 10);
-                const duration = parseInt(container.dataset.duration, 10);
-                const delay = parseInt(container.dataset.delay, 10);
+  function startCountUp(el, end, duration) {
+    let startTime = null;
 
-                // Fade-in
-                container.style.opacity = '1';
+    const step = (ts) => {
+      if (!startTime) startTime = ts;
+      const p = Math.min((ts - startTime) / duration, 1);
+      const v = Math.floor(end * easeOutCubic(p));
+      el.textContent = formatNumber(v);
+      if (p < 1) requestAnimationFrame(step);
+    };
 
-                setTimeout(() => {
-                    startCountUp(element, 0, end, duration);
-                }, delay);
+    requestAnimationFrame(step);
+  }
 
-                // Desactivar observer para que no se reinicie la animación
-                obs.unobserve(container);
-            }
-        });
-    }, {
-        threshold: 0.3 // 👈 El % visible del elemento para activar animación
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cards = document.querySelectorAll("[data-target-value][data-index]");
+
+  // Si reduce motion: setear valores finales sin animar
+  if (reduceMotion) {
+    cards.forEach((card) => {
+      const valueEl = card.querySelector(".count-up-value");
+      const end = parseInt(card.dataset.targetValue, 10) || 0;
+      valueEl.textContent = formatNumber(end);
+      card.classList.remove("opacity-0", "translate-y-2");
+      card.classList.add("opacity-100", "translate-y-0");
     });
+  } else {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-    counters.forEach(container => observer.observe(container));
+          const card = entry.target;
+          const valueEl = card.querySelector(".count-up-value");
+          const end = parseInt(card.dataset.targetValue, 10) || 0;
+          const duration = parseInt(card.dataset.duration, 10) || 2000;
+          const delay = parseInt(card.dataset.delay, 10) || 0;
+
+          // Mostrar card
+          card.classList.remove("opacity-0", "translate-y-2");
+          card.classList.add("opacity-100", "translate-y-0");
+
+          // Accesibilidad: que lector lea el valor final
+          const label = card.dataset.label || "Indicador";
+          const suffix = card.dataset.suffix || "";
+          card.setAttribute("aria-label", `${label}: ${formatNumber(end)}${suffix}`);
+
+          setTimeout(() => startCountUp(valueEl, end, duration), delay);
+
+          obs.unobserve(card);
+        });
+      },
+      {
+        threshold: 0.2,
+        // arranca un poco antes de que se vea completo
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    cards.forEach((c) => io.observe(c));
+  }
 </script>

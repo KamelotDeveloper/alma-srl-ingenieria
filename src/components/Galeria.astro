@@ -3,16 +3,15 @@ const images = [
   "/1.webp",
   "/2.webp",
   "/3.webp",
-  "/4.webp",
 ];
 ---
 
 <!-- Carrusel sin fondo ni borde -->
-<div class="relative overflow-hidden w-full flex flex-col items-center">
+<div class="relative overflow-hidden w-full flex flex-col items-center ">
   <!-- Pista de imágenes -->
   <div
     id="carousel-track"
-    class="flex transition-transform duration-700 ease-in-out w-full"
+    class="flex transition-transform duration-700 ease-in-out w-full "
     style="transform: translateX(0%)"
   >
     {images.map((src) => (

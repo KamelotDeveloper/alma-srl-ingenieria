@@ -2,39 +2,37 @@
      class="fixed top-0 left-0 w-full bg-transparent shadow-none z-50 transition-all duration-300">
   <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
     <!-- Logo -->
-    <a href="/" id="logo" class="font-serif text-xl font-bold text-[#d4ae6d]">
-      Paula Echeguia
-    </a>
+   <a href="/" id="logo"
+   class="font-serif text-xl font-bold 
+          text-[#28343D]
+          [text-shadow:_-1px_-1px_0_white,_1px_-1px_0_white,_-1px_1px_0_white,_1px_1px_0_white]">
+  Alma S.R.L
+</a>
 
     <!-- Botón hamburguesa (solo móvil) -->
-    <button id="menu-btn" class="md:hidden text-3xl text-[#d4ae6d] focus:outline-none">
+    <button id="menu-btn" class="md:hidden text-3xl text-[#28343D] focus:outline-none">
       ☰
     </button>
 
     <!-- Menú escritorio -->
     <div id="menu" class="hidden md:flex space-x-6">
-      <a href="/" class="hover:underline text-[#d4ae6d]">Home</a>
-      <a href="/about" class="hover:underline text-[#d4ae6d]">About</a>
-      <a target="_blank" href="https://calendly.com/echeguiapaula/30min?fbclid=PAZXh0bgNhZW0CMTEAAacjIQ8CGDIoZTElD5I544YZdGJIO38QKOB8jUD21d1Xz8OjbDWy4gSCdXlC2Q_aem_6-CS73SPQXWLI-zNp1x04g" class="hover:underline text-[#d4ae6d]">Schedule a call</a>
-      <a href="/contact" class="hover:underline text-[#d4ae6d]">Contact</a>
-      <a href="https://bizmls.com/listings/bbf-1287012/bus-all.asp" target="_blank" rel="noopener"
-         class="ml-4 px-4 py-2 bg-black text-white rounded-2xl hover:bg-[#d4ae6d] hover:text-black">
-         Search Businesses
-      </a>
+      <a href="/" class="hover:underline text-gray-100">Inicio</a>
+      <a href="/Servicios" class="hover:underline text-gray-100">Servicios</a>
+      <a href="/Pintureria" class="hover:underline text-gray-100">Pintureria</a>
+      <a href="/Alquiler" class="hover:underline text-gray-100">Alquileres</a>
+      <a href="/contact" class="hover:underline text-gray-100">Contactanos</a>
+     
     </div>
   </div>
 
   <!-- Panel lateral móvil -->
   <div id="mobile-panel"
        class="fixed top-0 right-0 h-full w-64 bg-white text-black transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50 p-6 space-y-6">
-    <a href="/" class="block hover:underline">Home</a>
-    <a href="/about" class="block hover:underline">About</a>
-    <a href="/contact" class="block hover:underline">Contact</a>
-    <a target="_blank" href="https://calendly.com/echeguiapaula/30min?fbclid=PAZXh0bgNhZW0CMTEAAacjIQ8CGDIoZTElD5I544YZdGJIO38QKOB8jUD21d1Xz8OjbDWy4gSCdXlC2Q_aem_6-CS73SPQXWLI-zNp1x04g" class="hover:underline text-[#d4ae6d]">Schedule a call</a>
-    <a href="https://bizmls.com/listings/bbf-1287012/bus-all.asp" target="_blank" rel="noopener"
-       class="block mt-4 px-4 py-2 bg-black text-white rounded-2xl hover:bg-[#d4ae6d] hover:text-black text-center">
-       Search Businesses
-    </a>
+     <a href="/" class="hover:underline text-gray-100">Inicio</a>
+      <a href="/Servicios" class="hover:underline text-gray-100">Servicios</a>
+      <a href="/Pintureria" class="hover:underline text-gray-100">Pintureria</a>
+      <a href="/Alquiler" class="hover:underline text-gray-100">Alquileres</a>
+      <a href="/contact" class="hover:underline text-gray-100">Contactanos</a>
   </div>
 
   <!-- Overlay oscuro (más opacidad para mayor contraste) -->
@@ -79,10 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (window.scrollY >= trigger) {
       navbar.classList.remove("bg-transparent", "shadow-none");
-      navbar.classList.add("bg-white", "shadow-lg");
+      navbar.classList.add("bg-gray", "shadow-lg");
       navbar.querySelectorAll("a").forEach(a => {
-        if (!a.classList.contains("bg-black")) {
-          a.classList.remove("text-[#d4ae6d]");
+        if (!a.classList.contains("bg-trasparent")) {
+          a.classList.remove("text-[#28343D]");
           a.classList.add("text-black");
         }
       });
@@ -92,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navbar.querySelectorAll("a").forEach(a => {
         if (!a.classList.contains("bg-black")) {
           a.classList.remove("text-black");
-          a.classList.add("text-[#d4ae6d]");
+          a.classList.add("text-[#28343D]");
         }
       });
     }
