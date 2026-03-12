@@ -1,44 +1,67 @@
 <section class="max-w-lg mx-auto p-6 fade-in-left">
   <h1 class="font-serif text-4xl mb-6 mt-24">Contact</h1>
 
-  <form action="https://formsubmit.co/paula@southfloridama.com"
+  <form action="https://formsubmit.co/info@almaingenieria.com.ar"
         method="POST"
         class="grid gap-4">
-    <!-- Redirección tras envío (opcional) -->
-    <input type="hidden" name="_next" value="/gracias" />
-    <!-- Desactiva captcha de FormSubmit si no lo querés -->
-    <input type="hidden" name="_captcha" value="false" />
 
+    <!-- Configuración FormSubmit -->
+    <input type="hidden" name="_subject" value="Nueva consulta desde almaingenieria.com.ar">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://almaingenieria.com.ar">
+    <input type="hidden" name="_captcha" value="false">
+    
+
+    <!-- Anti spam -->
+    <input type="text" name="_honey" style="display:none">
+
+    <!-- Campos -->
     <input type="text" name="name" placeholder="Name" required
-           class="border p-3 rounded-2xl"/>
-    <input type="text" name="phone" placeholder="Phone" required
-           class="border p-3 rounded-2xl"/>
+           class="border p-3 rounded-2xl input-field"/>
+
+    <input type="text" name="phone" placeholder="Phone"
+           class="border p-3 rounded-2xl input-field"/>
+
     <input type="email" name="email" placeholder="Email" required
-           class="border p-3 rounded-2xl"/>
+           class="border p-3 rounded-2xl input-field"/>
+
     <textarea name="message" placeholder="Message" required
-              class="border p-3 rounded-2xl"></textarea>
+              class="border p-3 rounded-2xl input-field"></textarea>
 
     <button type="submit"
-            class="bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800">
+            class="bg-black text-white px-6 py-3 rounded-2xl hover:bg-gray-800 transition">
       Send
     </button>
+
   </form>
 </section>
 
 <style>
-/* Animación de entrada (igual al Formulario A) */
+
+/* Color correcto para texto en inputs */
+.input-field{
+  color:#000;
+  background:#fff;
+}
+
+.input-field::placeholder{
+  color:#777;
+}
+
+/* Animación */
 @keyframes fadeInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
+  0%{
+    opacity:0;
+    transform:translateX(-20px);
   }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
+  100%{
+    opacity:1;
+    transform:translateX(0);
   }
 }
 
-.fade-in-left {
-  animation: fadeInLeft 1.5s ease-out forwards;
+.fade-in-left{
+  animation:fadeInLeft 1.5s ease-out forwards;
 }
+
 </style>
