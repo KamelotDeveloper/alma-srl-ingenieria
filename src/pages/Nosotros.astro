@@ -1,0 +1,183 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base title="Quiénes Somos | Alma S.R.L">
+  <Nav />
+
+  <main class="px-6 pt-24 md:pt-28 max-w-6xl mx-auto fade-in-left">
+    <!-- HERO -->
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+      <!-- Texto -->
+      <div class="md:col-span-6">
+        <p class="text-sm tracking-wide uppercase text-white/60 mb-3">
+          Conoce nuestra empresa
+        </p>
+
+        <h1 class="font-serif text-4xl md:text-5xl leading-tight">
+          Compromiso, calidad y experiencia en cada proyecto
+        </h1>
+
+        <p class="mt-4 text-white/75 leading-relaxed max-w-prose">
+          Somos una empresa dedicada a la ingeniería, construcción y servicios técnicos, 
+          con años de trayectoria acompañando a nuestros clientes en cada etapa de sus proyectos.
+        </p>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
+                   bg-white text-slate-900 hover:bg-white/90 transition shadow"
+          >
+            Contactanos
+          </a>
+
+          <a
+            href="/Servicios"
+            class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
+                   border border-white/20 text-white hover:bg-white/10 transition"
+          >
+            Ver servicios
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen -->
+      <div class="md:col-span-6">
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 shadow-lg">
+          <img
+            src="/3.webp"
+            alt="Equipo de trabajo Alma S.R.L"
+            class="w-full h-[260px] md:h-[380px] object-cover"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"></div>
+
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="rounded-xl bg-slate-950/50 backdrop-blur border border-white/10 px-4 py-3">
+              <p class="text-sm font-semibold">Nuestra misión</p>
+              <p class="text-xs text-white/70">
+                Brindar soluciones integrales con profesionalismo y compromiso.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="mt-14 md:mt-16">
+      <div class="mb-8">
+        <h2 class="font-serif text-3xl md:text-4xl">Nuestros Valores</h2>
+        <p class="text-white/70 mt-2 max-w-2xl">
+          Los principios que guían nuestro trabajo diario.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Puntualidad</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Respetamos los plazos acordados porque sabemos que el tiempo es valioso para vos.
+          </p>
+        </article>
+
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Calidad</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Utilizamos materiales de primera línea y técnicas especializadas para garantizar resultados duraderos.
+          </p>
+        </article>
+
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Comunicación</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Mantenemos una comunicación fluida y transparente durante todo el proceso.
+          </p>
+        </article>
+
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Profesionalismo</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Contamos con un equipo técnico capacitado y actualizado constantemente.
+          </p>
+        </article>
+
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Compromiso</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Nos involucramos en cada proyecto como si fuera propio, asegurando la satisfacción del cliente.
+          </p>
+        </article>
+
+        <article class="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+          <div class="text-white/80 mb-3">
+            <svg viewBox="0 0 24 24" fill="none" class="h-8 w-8" aria-hidden="true">
+              <path d="M4 19h16M6 17V7l6-3 6 3v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold">Experiencia</h3>
+          <p class="text-sm text-white/70 mt-2">
+            Años de trayectoria nos permiten anticipar problemas y ofrecer soluciones eficientes.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="mt-10 mb-24 rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h3 class="text-xl font-semibold">¿Querés conocer más sobre nosotros?</h3>
+        <p class="text-white/70 mt-1">
+          Escribinos y te respondemos todas tus consultas.
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
+               bg-white text-slate-900 hover:bg-white/90 transition shadow"
+      >
+        Contactanos
+      </a>
+    </section>
+
+    <style>
+      @keyframes fadeInLeft {
+        0% { opacity: 0; transform: translateX(-20px); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+      .fade-in-left { animation: fadeInLeft 1.1s ease-out forwards; }
+    </style>
+  </main>
+
+  <Footer />
+</Base>
