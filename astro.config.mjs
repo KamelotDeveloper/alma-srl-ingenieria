@@ -4,11 +4,11 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: "https://example.com", // [CHANGEME]
-   // ... otras configuraciones
-      devToolbar: {
-        enabled: false,
-      },
-    });
+  site: 'https://kamelotdeveloper.github.io',
+  base: '/alma-srl-ingenieria',
+  devToolbar: {
+    enabled: false,
+  },
+});
 
 
