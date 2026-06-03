@@ -3,8 +3,7 @@ import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://kamelotdeveloper.github.io',
-  base: '/alma-srl-ingenieria',
+  site: 'https://almaingenieria.com.ar',
   devToolbar: {
     enabled: false,
   },
