@@ -1,35 +1,36 @@
 ---
 const { title = "Alma S.R.L", description = "Servicios de ingenieria y obras." } = Astro.props;
+const url = Astro.url;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/logo.png">
-
+    <link rel="icon" type="image/png" href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/logo.png'}>
 
     <!-- SEO / OG -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={url.origin + import.meta.env.BASE_URL} />
+    <meta property="og:site_name" content="Alma S.R.L" />
+    <meta property="og:image" content={url.origin + import.meta.env.BASE_URL.replace(/\/$/, '') + '/logo.png'} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="font-sans text-gray-100" style="background-color: #28343D;">
-  <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
-  <slot />
-</body>
-
+    <a href="#main" class="sr-only focus:not-sr-only">Ir al contenido</a>
+    <slot />
+  </body>
 </html>
 

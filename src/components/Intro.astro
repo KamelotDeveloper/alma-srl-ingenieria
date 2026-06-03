@@ -1,8 +1,9 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const images = [
-  "/1a.webp",
-  "/2a.webp",
-  "/3a.webp",
+  base + '/1a.webp',
+  base + '/2a.webp',
+  base + '/3a.webp',
 ];
 // Velocidad específica para este carrusel
 const speed = 3000; // 👈 Cambiá este valor sin afectar a los otros

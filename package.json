@@ -1,5 +1,5 @@
 {
-  "name": "paulaecheguiabb",
+  "name": "alma-srl-ingenieria",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.13.5",
-    "nodemailer": "^8.0.2"
+    "astro": "^5.13.5"
   }
 }

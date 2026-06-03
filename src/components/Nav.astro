@@ -2,7 +2,7 @@
      class="fixed top-0 left-0 w-full bg-transparent shadow-none z-50 transition-all duration-300">
   <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
     <!-- Logo -->
-   <a href="/" id="logo"
+   <a href={import.meta.env.BASE_URL} id="logo"
    class="font-serif text-xl font-bold 
           text-[#28343D]
           [text-shadow:_-1px_-1px_0_white,_1px_-1px_0_white,_-1px_1px_0_white,_1px_1px_0_white]">
@@ -16,11 +16,11 @@
 
     <!-- Menú escritorio -->
     <div id="menu" class="hidden md:flex space-x-6">
-      <a href="/" class="hover:underline text-gray-100">Inicio</a>
-      <a href="/Servicios" class="hover:underline text-gray-100">Servicios</a>
-      <a href="/Alquiler" class="hover:underline text-gray-100">Alquileres</a>
-      <a href="/Nosotros" class="hover:underline text-gray-100">Quiénes Somos</a>
-      <a href="/contact" class="hover:underline text-gray-100">Contactanos</a>
+      <a href={import.meta.env.BASE_URL} class="hover:underline text-gray-100">Inicio</a>
+      <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Servicios'} class="hover:underline text-gray-100">Servicios</a>
+      <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Alquiler'} class="hover:underline text-gray-100">Alquileres</a>
+      <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Nosotros'} class="hover:underline text-gray-100">Quiénes Somos</a>
+      <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/contact'} class="hover:underline text-gray-100">Contactanos</a>
       
     </div>
   </div>
@@ -29,11 +29,11 @@
   <div id="mobile-panel"
        class="fixed top-0 right-0 h-screen w-72 bg-[#28343D] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50 p-8">
       <div class="flex flex-col gap-4 mt-12">
-        <a href="/" class="text-lg text-white hover:underline py-2 border-b border-white/20">Inicio</a>
-        <a href="/Servicios" class="text-lg text-white hover:underline py-2 border-b border-white/20">Servicios</a>
-        <a href="/Alquiler" class="text-lg text-white hover:underline py-2 border-b border-white/20">Alquileres</a>
-        <a href="/Nosotros" class="text-lg text-white hover:underline py-2 border-b border-white/20">Quiénes Somos</a>
-        <a href="/contact" class="text-lg text-white hover:underline py-2 border-b border-white/20">Contactanos</a>
+        <a href={import.meta.env.BASE_URL} class="text-lg text-white hover:underline py-2 border-b border-white/20">Inicio</a>
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Servicios'} class="text-lg text-white hover:underline py-2 border-b border-white/20">Servicios</a>
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Alquiler'} class="text-lg text-white hover:underline py-2 border-b border-white/20">Alquileres</a>
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Nosotros'} class="text-lg text-white hover:underline py-2 border-b border-white/20">Quiénes Somos</a>
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/contact'} class="text-lg text-white hover:underline py-2 border-b border-white/20">Contactanos</a>
       </div>
   </div>
 

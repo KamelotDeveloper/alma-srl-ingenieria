@@ -27,7 +27,7 @@ import Footer from "../components/Footer.astro";
 
         <div class="mt-6 flex flex-col sm:flex-row gap-3">
           <a
-            href="/contact"
+            href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/contact'}
             class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
                    bg-white text-slate-900 hover:bg-white/90 transition shadow"
           >
@@ -35,7 +35,7 @@ import Footer from "../components/Footer.astro";
           </a>
 
           <a
-            href="/Servicios"
+            href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/Servicios'}
             class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
                    border border-white/20 text-white hover:bg-white/10 transition"
           >
@@ -48,7 +48,7 @@ import Footer from "../components/Footer.astro";
       <div class="md:col-span-6">
         <div class="relative overflow-hidden rounded-2xl border border-white/10 shadow-lg">
           <img
-            src="/3.webp"
+            src={import.meta.env.BASE_URL.replace(/\/$/, '') + '/3.webp'}
             alt="Equipo de trabajo Alma S.R.L"
             class="w-full h-[260px] md:h-[380px] object-cover"
             loading="lazy"
@@ -162,7 +162,7 @@ import Footer from "../components/Footer.astro";
         </p>
       </div>
       <a
-        href="/contact"
+        href={import.meta.env.BASE_URL.replace(/\/$/, '') + '/contact'}
         class="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold
                bg-white text-slate-900 hover:bg-white/90 transition shadow"
       >
